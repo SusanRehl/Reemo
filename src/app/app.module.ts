@@ -33,6 +33,8 @@ import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+import { ReemoService } from './services/reemo.service';
+
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
@@ -74,6 +76,7 @@ const httpInterceptorProviders: Type<any>[] = [
     NgxChartsModule,
   ], // modules needed to run this module
   providers: [
+    ReemoService,
     appRoutingProviders,
     httpInterceptorProviders,
     Title,

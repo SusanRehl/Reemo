@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
 
 import { Title }     from '@angular/platform-browser';
 
@@ -8,13 +8,15 @@ import { ItemsService, UsersService, ProductsService, AlertsService } from '../.
 
 import { multi } from './data';
 
+import { ReemoService, ReemoData }  from '../services/reemo.service';
+
 @Component({
   selector: 'qs-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   viewProviders: [ ItemsService, UsersService, ProductsService, AlertsService ],
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
 
   items: Object[];
   users: Object[];
@@ -37,6 +39,9 @@ export class DashboardComponent implements AfterViewInit {
   showYAxisLabel: boolean = true;
   yAxisLabel: string = 'Sales';
 
+  reemoSub: any;
+  reemoData: ReemoData;
+
   colorScheme: any = {
     domain: ['#1565C0', '#2196F3', '#81D4FA', '#FF9800', '#EF6C00'],
   };
@@ -49,6 +54,7 @@ export class DashboardComponent implements AfterViewInit {
               private _usersService: UsersService,
               private _alertsService: AlertsService,
               private _productsService: ProductsService,
+              private _reemoService: ReemoService,
               private _loadingService: TdLoadingService) {
                 // Chart
                 this.multi = multi.map((group: any) => {
@@ -58,6 +64,17 @@ export class DashboardComponent implements AfterViewInit {
                   });
                   return group;
                 });
+  }
+
+  ngOnInit(){
+    this.reemoSub = this._reemoService.GetSeniorData().subscribe(
+    (data) => {
+      this.reemoData = data;
+    });
+  }
+
+  ngOnDestroy(){
+    if(this.reemoSub) this.reemoSub.unsubscribe;
   }
 
   ngAfterViewInit(): void {
