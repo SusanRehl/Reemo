@@ -17,21 +17,20 @@ export class ReemoService {
         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-   
+
   private parseJson(data: any){
-  //  return JSON.parse(data);
-  var data = JSON.parse(JSON.parse(data._body));
+//Parse 1 and 2
+    var data = JSON.parse(JSON.parse(data._body));
     let finalJson = "";
+
     for(var i=0; i<data.length; i++){
       let dataItem = data[i];
       finalJson += dataItem["JSON_F52E2B61-18A1-11d1-B105-00805F49916B"];
     }
-
-    console.log(finalJson);
-
+// Parse 3
     let finalJsonData = JSON.parse(finalJson);
 
-    console.log(finalJsonData);
+    console.log("third parse: ", finalJsonData);
 
     var rtn = new ReemoData();
 
@@ -40,12 +39,37 @@ export class ReemoService {
     // new up a new class (sleep, step or heart (which you need to define below))
     // add that new instance to the rtn instance.
 
+    let stepData = [];
+    let heartRateData = [];
+    let sleepData = [];
+
+    for(var j=0; j<finalJsonData.length; j++) {
+
+          //PULLING STEP DATA FROM FINALJSONDATA
+              stepData.push(finalJsonData[j].summary_data.stepcount);
+
+        //PULLING SLEEP DATA FROM FINALJSONDATA
+              if("sleep" in finalJsonData[j].summary_data) {
+                 sleepData.push(finalJsonData[j].summary_data.sleep);
+                }
+
+          //PULLING HEARTRATE DATA FROM FINALJSONDATA
+             if("heartrate" in finalJsonData[j].summary_data) {
+                  heartRateData.push(finalJsonData[j].summary_data.heartrate);
+                  }
+
+       }  //end for loop
+
+       console.log(stepData);
+       console.log(heartRateData);
+       console.log(sleepData);
+
     return rtn;
   }
 }
 
 export class ReemoData {
-  SleepData: ReemoSleep[];
-  StepData: ReemoStep[];
-  HeartData: ReemoHeart[];
+//  SleepData: ReemoSleep[];
+  // StepData: ReemoStep[];
+  // HeartData: ReemoHeart[];
 }
