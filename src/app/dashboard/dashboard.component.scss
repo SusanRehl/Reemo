@@ -8,12 +8,36 @@
   height: 300px;
 }
 
-.actionpane {
-  background-color: #C2CAD0;
+.seniorInfoSidebar {
+  background-color: #afd275;
   margin: -1% 0 -1% -1%;
-  padding: 3%;
+  padding: 2%;
+  height: 1000px;
 }
 
-.mat-toolbar.mat-primary {
-    background-color: #7E685A;
+.dataContent {
+  margin-bottom: 5%;
+}
+
+.timeframe {
+  background-color: #77726c;
+  width: 103%;
+  margin: -2% 0 1% 0;
+  color: #FFFFFF;
+  padding: 1px 0 1px 25px;
+}
+
+[md-fab] {
+  left: -1%;
+  z-index: 1;
+  top: 4px;
+}
+
+li {
+  list-style: none;
+}
+
+.reemofooter {
+   font-style: italic;
+   font-weight: bold;
 }

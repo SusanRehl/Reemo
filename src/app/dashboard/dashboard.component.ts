@@ -18,6 +18,9 @@ import { ReemoService, ReemoData }  from '../services/reemo.service';
 })
 export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
 
+  weekShowing: boolean = false;
+  monthShowing: boolean = false;
+
   items: Object[];
   users: Object[];
   products: Object[];
@@ -39,11 +42,9 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
   showYAxisLabel: boolean = true;
   yAxisLabel: string = 'Sales';
 
-  reemoSub: any;
-  reemoData: ReemoData;
-
   colorScheme: any = {
-    domain: ['#1565C0', '#2196F3', '#81D4FA', '#FF9800', '#EF6C00'],
+  //  domain: ['#1565C0', '#2196F3', '#81D4FA', '#FF9800', '#EF6C00'],
+    domain: ['#7E685A', '#C2B9B0', '#AFD275', '#C2CAD0', '#9E9D24'],
   };
 
   // line, area
@@ -65,6 +66,9 @@ export class DashboardComponent implements AfterViewInit, OnInit, OnDestroy {
                   return group;
                 });
   }
+
+  reemoSub: any;
+  reemoData: ReemoData;
 
   ngOnInit(){
     this.reemoSub = this._reemoService.GetSeniorData().subscribe(

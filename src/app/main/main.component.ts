@@ -13,21 +13,21 @@ export class MainComponent {
       route: '/',
       icon: 'dashboard',
     }, {
-      title: 'Product Dashboard',
+      title: 'Medications',
       route: '/product',
-      icon: 'view_quilt',
+      icon: 'local_pharmacy',
     }, {
-      title: 'Product Logs',
+      title: 'Conditions',
       route: '/logs',
-      icon: 'receipt',
+      icon: 'local_hospital',
     }, {
-      title: 'Manage Users',
+      title: 'Therapies',
       route: '/users',
-      icon: 'people',
+      icon: 'directions_walk',
     }, {
-      title: 'Covalent Templates',
+      title: 'Settings',
       route: '/templates',
-      icon: 'view_module',
+      icon: 'settings',
     },
   ];
 

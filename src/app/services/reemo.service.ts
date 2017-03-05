@@ -5,9 +5,7 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class ReemoService {
-  constructor (private http: Http)  {
-
-  }
+  constructor (private http: Http)  {  }
 
   GetSeniorData() :Observable<ReemoData>{
       return this.http
@@ -15,7 +13,7 @@ export class ReemoService {
         //.map(r => r.json().data as ReemoData)
         .map(r => this.parseJson(r))
         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-  }
+   }
 
   private parseJson(data: any){
     //Parse #1 and #2
@@ -32,11 +30,6 @@ export class ReemoService {
     console.log("third parse: ", finalJsonData);
 
     var rtn = new ReemoData();
-
-    // TODO - loop through finalJsonData
-    // for each loop, determine what type it is.
-    // new up a new class (sleep, step or heart (which you need to define below))
-    // add that new instance to the rtn instance.
 
     let stepData = [];
     let heartRateData = [];
@@ -60,14 +53,12 @@ export class ReemoService {
        }  //end for loop
 
   //     console.log(stepData);
-  //     console.log(heartRateData);
+       console.log(heartRateData);
   //     console.log(sleepData);
 
      rtn.SleepData = sleepData;
      rtn.HeartRateData = heartRateData;
      rtn.StepData = stepData;
-
-
 
     return rtn;
   }
