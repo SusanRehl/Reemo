@@ -52,13 +52,50 @@ export class ReemoService {
 
        }  //end for loop
 
+       //loop over sleepData array and convert seconds to hours and minutes
+       //push to array as new property sleeptime (object with hours and minutes properties)
+
+       var sleeptime = function(data) {
+           for(var k=0; k<data.length; k++) {
+              var hours   = Math.floor(data[k].sleep_time_in_seconds / 3600);
+              var minutes = Math.floor((data[k].sleep_time_in_seconds - (hours * 3600)) / 60);
+
+              var sleep_time = {hours: hours, minutes: minutes};
+                console.log("sleep_time: ", sleep_time);
+                data[k].sleep_time = sleep_time;
+             }
+           }
+           sleeptime(sleepData);
+
   //     console.log(stepData);
-       console.log(heartRateData);
+  //     console.log(heartRateData);
   //     console.log(sleepData);
+
+     let lastAvgHeartRate = [];
+     lastAvgHeartRate.push(heartRateData[heartRateData.length-1]);
+     console.log ("here's last avg heartrate: ", lastAvgHeartRate);
+
+     let lastStepcount = [];
+     lastStepcount.push(stepData[stepData.length-1]);
+     console.log ("here's last stepcount: ", lastStepcount);
+
+     let lastSleep = [];
+     lastSleep.push(sleepData[sleepData.length-1]);
+     console.log ("here's last sleep: ", lastSleep);
+
+
+
+
+
+
 
      rtn.SleepData = sleepData;
      rtn.HeartRateData = heartRateData;
      rtn.StepData = stepData;
+
+     rtn.LastAvgHeartRate = lastAvgHeartRate;
+     rtn.LastStepcount = lastStepcount;
+     rtn.LastSleep = lastSleep;
 
     return rtn;
   }
@@ -68,4 +105,7 @@ export class ReemoData {
   SleepData;
   StepData;
   HeartRateData;
+  LastAvgHeartRate;
+  LastStepcount;
+  LastSleep;
 }

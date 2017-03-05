@@ -44,12 +44,15 @@
         <div flex="33" layout="column">
           <md-card class="md-card-colored" flex>
             <md-card-content class="text-center">
-              <div class="md-headline">{{ '2341'| digits }} <md-icon class="tc-green-500 text-sm">arrow_upward</md-icon></div>
-              <md-icon class="icon tc-indigo-700">perm_contact_calendar</md-icon>
-              <div layout="column">
-                <div class="md-subhead">Active Users</div>
-                <div class="md-caption tc-grey-600">updated {{ '2016-06-17 12:59:59' | timeAgo }}</div>
+              <div *ngIf="reemoData">
+                <div *ngFor="let sleep of reemoData.LastSleep">
+                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
+                    <div layout="column">
+                      <div class="md-subhead">Amount of Sleep</div>
+                      <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
+                    </div>
               </div>
+            </div>
             </md-card-content>
           </md-card>
         </div>
@@ -57,12 +60,15 @@
         <div flex="33" layout="column">
           <md-card class="md-card-colored" flex>
             <md-card-content class="text-center">
-              <div class="md-headline">{{ '72452903343' | bytes }} <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
-              <md-icon class="icon tc-light-blue-700">sd_storage</md-icon>
-              <div layout="column">
-                <div class="md-subhead">User Disk Usage</div>
-                <div class="md-caption tc-grey-600">updated {{ '2016-07-18 11:02:59' | timeAgo }}</div>
+              <div *ngIf="reemoData">
+                <div *ngFor="let avgheart of reemoData.LastAvgHeartRate">
+                   <div class="md-display-2">{{avgheart.average_heartrate}} <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
+                    <div layout="column">
+                      <div class="md-subhead">Average Heart Rate</div>
+                      <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
+                    </div>
               </div>
+            </div>
             </md-card-content>
           </md-card>
         </div>
@@ -70,12 +76,15 @@
         <div flex="33" layout="column">
           <md-card class="md-card-colored" flex>
             <md-card-content class="text-center">
-              <div class="md-headline">{{ '324523' | digits}} <md-icon class="tc-green-500 text-sm">arrow_upward</md-icon></div>
-              <md-icon class="icon tc-cyan-700">receipt</md-icon>
-              <div layout="column">
-                <div class="md-subhead">Pages Viewed</div>
-                <div class="md-caption tc-grey-600">updated {{ '2016-07-13 09:59:59' | timeAgo }}</div>
+              <div *ngIf="reemoData">
+                <div *ngFor="let step of reemoData.LastStepcount">
+                   <div class="md-display-2">{{step.total_stepcount}} <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
+                    <div layout="column">
+                      <div class="md-subhead">Total Stepcount</div>
+                      <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
+                    </div>
               </div>
+            </div>
             </md-card-content>
           </md-card>
         </div>
