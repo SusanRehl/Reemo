@@ -48,11 +48,11 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let sleep of reemoData.LastSleep">
-                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-red-500 text-lg">{{sleep.indicator}}</md-icon></div>
+                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-green-500 text-lg">{{sleep.indicator}}</md-icon></div>
                     <div layout="column">
                       <div class="md-subhead">Amount of Sleep</div>
                          <div class="md-subhead red">{{sleep.message}}</div>
-                      <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
+                      <div class="md-caption tc-grey-600">updated {{ '2017-03-06 08:15:59' | timeAgo }}</div>
                     </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
                     <div layout="column">
                       <div class="md-subhead">Average Heart Rate</div>
                       <div class="md-subhead red">{{avgheart.message}}</div>
-                      <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
+                      <div class="md-caption tc-grey-600">updated {{ '2017-03-06 08:15:59' | timeAgo }}</div>
                     </div>
               </div>
             </div>
@@ -86,7 +86,7 @@
                     <div layout="column">
                       <div class="md-subhead">Total Stepcount</div>
                         <div class="md-subhead red">{{step.message}}</div>
-                      <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
+                      <div class="md-caption tc-grey-600">updated {{ '2017-03-06 08:15:59' | timeAgo }}</div>
                     </div>
               </div>
             </div>
@@ -111,37 +111,27 @@
         <md-card>
           <md-card-title class="cardheader">Sleep Data</md-card-title>
           <md-card-content>
-             <div *ngIf="reemoData">
-               <li *ngFor="let sleep of reemoData.SleepData">
-                  <span>{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m </span>
-               </li>
-             </div>
+            <div class="reemoData" *ngIf="reemoData">
+              <table>
+                  <tr class="rowstyle1">
+                    <th class="tabledata">Date:</th>
+                    <th class="tabledata">Sleep Time:</th>
+                  </tr>
+                  <tr class="rowstyle2" *ngFor="let sleep of reemoData.SleepWeek">
+                    <th class="tabledata">{{sleep.awakened_date}}</th>
+                    <th class="tabledata">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m </th>
+                  </tr>
+              </table>
+            </div>
           </md-card-content>
         </md-card>
       </div>  <!-- end sleep col -->
 
-       <div flex="33" layout="column">
-        <md-card>
-          <md-card-title class="cardheader">Heart Rate Data</md-card-title>
-          <md-card-content>
-             <div *ngIf="reemoData">
-               <li *ngFor="let sleep of reemoData.SleepData">
-                  <span>{{sleep.sleep_time_in_seconds}}</span>
-               </li>
-             </div>
-          </md-card-content>
-        </md-card>
-      </div>  <!-- end heart col  -->
-
-     <div flex="33" layout="column">
+       <div flex="66" layout="column">
         <md-card>
           <md-card-title class="cardheader">Step Data</md-card-title>
           <md-card-content>
-             <div *ngIf="reemoData">
-               <li *ngFor="let sleep of reemoData.SleepData">
-                  <span>{{sleep.sleep_time_in_seconds}}</span>
-               </li>
-             </div>
+             <img md-card-image src="../assets/reemochart.png">  <!--[alt]="Step Chart Data" -->
           </md-card-content>
         </md-card>
       </div>  <!-- end step col  -->
@@ -232,10 +222,10 @@
 </div>  <!-- end body -->
 
   <td-layout-footer>
-    <div layout="row" layout-align="start center">
+    <div layout="row" layout-align="start center" class="footercontainer">
       <span class="md-caption"></span>
       <span flex></span>
-      <span class="md-caption reemofooter">Powered by [Reemo logo here]</span>
+      <span class="md-caption reemofooter">Powered by <img class="logofooter" src="../assets/reemologo.png"></span>
     </div>
   </td-layout-footer>
 

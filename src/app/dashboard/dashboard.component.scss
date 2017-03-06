@@ -59,6 +59,7 @@ li {
 
 table {
     border-collapse: collapse;
+    width: 100%;
 }
 
 th {
@@ -78,7 +79,18 @@ tr.rowstyle2 th {
   padding-right: 5%;
 }
 
+div.footercontainer {
+   height: 20px;
+   position: relative;
+}
+
 .reemofooter {
    font-style: italic;
    font-weight: bold;
+}
+
+.logofooter {
+  height: 15px;
+  width: auto;
+  transform: translate(0, 15%);
 }
