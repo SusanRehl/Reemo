@@ -115,9 +115,10 @@ export class ReemoService {
         if(lastSleep[0].sleep_time.hours < 6) {
               var indicator = 'priority_high';
                var message = "Sleep is below target range. Please follow up.";
+               var colorclass = "tc-red-500 text-lg";
         }  else  {
               var indicator = 'sentiment_satisfied';
-            //  var colorclass = "tc-green-500 text-lg";
+             var colorclass = "tc-green-500 text-lg";
         }
         lastSleep[0].indicator = indicator;
         lastSleep[0].message = message;

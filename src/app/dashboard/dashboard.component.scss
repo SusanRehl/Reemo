@@ -53,6 +53,31 @@ li {
   margin: 2% 0;
 }
 
+.cardheader {
+  color: #0C74D5;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+  font-weight: normal;
+}
+
+tr.rowstyle1 th {
+  border-bottom: 3px solid #77726c;
+}
+
+tr.rowstyle2 th {
+  border-bottom: 1px solid #77726c;
+}
+
+.tabledata {
+  text-align: left;
+  padding-right: 5%;
+}
+
 .reemofooter {
    font-style: italic;
    font-weight: bold;
