@@ -82,7 +82,7 @@ export class ReemoService {
      lastSleep.push(sleepData[sleepData.length-1]);
   // console.log ("here's last sleep: ", lastSleep);
 
-// used to test color and message change  lastAvgHeartRate[0].average_heartrate = 200;
+//test message change  lastAvgHeartRate[0].average_heartrate = 200;
 
      console.log("last avg heartrate is: ", lastAvgHeartRate[0].average_heartrate);
 

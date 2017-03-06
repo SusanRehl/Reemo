@@ -10,9 +10,9 @@
               <img md-card-image [alt]="Dad" src="../assets/grandpa.jpg">
               <md-card-title>Joseph Cunningham</md-card-title>
               <md-card-content class="secondary">
-                  <h4>Contact Information</h4>
-                  <p>Home Phone:  651-897-5720</p>
-                  <p>Cell Phone:  651-223-9964</p>
+                  <div class="md-title">Contact Information</div>
+                  <div class="md-subhead">Home Phone:  651-897-5720</div>
+                  <div class="md-subhead">Cell Phone:  651-223-9964</div>
                   <md-card-actions>
                       <button md-button color="primary">TEXT</button>
                       <button md-button color="primary">EMAIL</button>
@@ -20,11 +20,11 @@
               </md-card-content>
           </md-card>
           <md-card>
-              <md-card-title>Caregiver Information</md-card-title>
+              <md-card-title>Northridge Health and Rehab</md-card-title>
                <md-card-content class="secondary">
-                    <h4>name</h4>
-                    <p>phone</p>
-                    <p>address</p>
+                    <div class="md-title">763-592-3000</div>
+                    <div class="md-subhead">5430 Boone Avenue N.</div>
+                    <div class="md-subhead">New Hope, MN 55428</div>
                     <md-card-actions>
                        <button md-button color="primary">TEXT</button>
                        <button md-button color="primary">EMAIL</button>
@@ -37,7 +37,7 @@
 
        <div layout="row" class="timeframe today" *ngIf="reemoData">  <!-- TODAY divider -->
            <div *ngFor="let avgheart of reemoData.LastAvgHeartRate">
-             <p class="md-headline">For {{avgheart.date | date: 'fullDate'}}</p>
+             <div class="md-headline">For {{avgheart.date | date: 'fullDate'}}</div>
            </div>
          </div>
 
@@ -48,7 +48,7 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let sleep of reemoData.LastSleep">
-                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-red-500 text-lg">priority_high</md-icon></div>
+                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-red-500 text-lg">{{sleep.indicator}}</md-icon></div>
                     <div layout="column">
                       <div class="md-subhead">Amount of Sleep</div>
                          <div class="md-subhead red">{{sleep.message}}</div>
