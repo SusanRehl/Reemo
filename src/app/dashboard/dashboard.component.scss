@@ -12,7 +12,7 @@
   background-color: #afd275;
   margin: -1% 0 -1% -1%;
   padding: 2%;
-  height: 1000px;
+  height: 120vw;
 }
 
 .dataContent {
@@ -27,6 +27,14 @@
   padding: 1px 0 1px 25px;
 }
 
+.today {
+  padding: 2% 0 2% 5%;
+}
+
+.red {
+  color: red;
+}
+
 [md-fab] {
   left: -1%;
   z-index: 1;
@@ -35,6 +43,10 @@
 
 li {
   list-style: none;
+}
+
+.md-headline {
+  margin: 2% 0;
 }
 
 .reemofooter {

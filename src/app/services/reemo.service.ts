@@ -52,8 +52,7 @@ export class ReemoService {
 
        }  //end for loop
 
-       //loop over sleepData array and convert seconds to hours and minutes
-       //push to array as new property sleeptime (object with hours and minutes properties)
+       //LOOP OVER SLEEPDATA ARRAY, CONVERT SLEEPTIMEINSECONDS TO HRS MINS THEN PUSH TO ARRAY AS NEW PROPERTY SLEEPTIME
 
        var sleeptime = function(data) {
            for(var k=0; k<data.length; k++) {
@@ -61,7 +60,7 @@ export class ReemoService {
               var minutes = Math.floor((data[k].sleep_time_in_seconds - (hours * 3600)) / 60);
 
               var sleep_time = {hours: hours, minutes: minutes};
-                console.log("sleep_time: ", sleep_time);
+              //  console.log("sleeptime: ", sleep_time);
                 data[k].sleep_time = sleep_time;
              }
            }
@@ -73,18 +72,55 @@ export class ReemoService {
 
      let lastAvgHeartRate = [];
      lastAvgHeartRate.push(heartRateData[heartRateData.length-1]);
-     console.log ("here's last avg heartrate: ", lastAvgHeartRate);
+//     console.log ("here's last avg heartrate: ", lastAvgHeartRate);
 
      let lastStepcount = [];
      lastStepcount.push(stepData[stepData.length-1]);
-     console.log ("here's last stepcount: ", lastStepcount);
+  //   console.log ("here's last stepcount: ", lastStepcount);
 
      let lastSleep = [];
      lastSleep.push(sleepData[sleepData.length-1]);
-     console.log ("here's last sleep: ", lastSleep);
+  // console.log ("here's last sleep: ", lastSleep);
 
+// used to test color and message change  lastAvgHeartRate[0].average_heartrate = 200;
 
+     console.log("last avg heartrate is: ", lastAvgHeartRate[0].average_heartrate);
 
+        if(lastAvgHeartRate[0].average_heartrate < 60 || lastAvgHeartRate[0].average_heartrate > 100) {
+              var indicator = 'priority_high';
+               var message = "Heart rate is outside target range. Please follow up.";
+        }  else  {
+              var indicator = 'sentiment_satisfied';
+            //  var colorclass = "tc-green-500 text-lg";
+        }
+        lastAvgHeartRate[0].indicator = indicator;
+        lastAvgHeartRate[0].message = message;
+  //      lastAvgHeartRate[0].colorclass = colorclass;
+
+        console.log("new last avg heart rate array: ", lastAvgHeartRate);
+
+// test message change     lastStepcount[0].total_stepcount = 50;
+        if(lastStepcount[0].total_stepcount < 300) {
+              var indicator = 'priority_high';
+               var message = "Step count is below target range. Please follow up.";
+        }  else  {
+              var indicator = 'sentiment_satisfied';
+            //  var colorclass = "tc-green-500 text-lg";
+        }
+        lastStepcount[0].indicator = indicator;
+        lastStepcount[0].message = message;
+
+  //test message change      lastSleep[0].sleep_time.hours = 3;
+
+        if(lastSleep[0].sleep_time.hours < 6) {
+              var indicator = 'priority_high';
+               var message = "Sleep is below target range. Please follow up.";
+        }  else  {
+              var indicator = 'sentiment_satisfied';
+            //  var colorclass = "tc-green-500 text-lg";
+        }
+        lastSleep[0].indicator = indicator;
+        lastSleep[0].message = message;
 
 
 
@@ -96,6 +132,8 @@ export class ReemoService {
      rtn.LastAvgHeartRate = lastAvgHeartRate;
      rtn.LastStepcount = lastStepcount;
      rtn.LastSleep = lastSleep;
+
+
 
     return rtn;
   }

@@ -35,9 +35,11 @@
 
     <div flex-gt-sm="75"><!-- right section -->
 
-       <div layout="row" class="timeframe">  <!-- TODAY divider -->
-             <h3>For [lastdate var goes here]</h3>
-       </div>
+       <div layout="row" class="timeframe today" *ngIf="reemoData">  <!-- TODAY divider -->
+           <div *ngFor="let avgheart of reemoData.LastAvgHeartRate">
+             <p class="md-headline">For {{avgheart.date | date: 'fullDate'}}</p>
+           </div>
+         </div>
 
       <div layout="row" class="dataContent"><!-- row of small indicators -->
 
@@ -46,9 +48,10 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let sleep of reemoData.LastSleep">
-                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
+                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-red-500 text-lg">priority_high</md-icon></div>
                     <div layout="column">
                       <div class="md-subhead">Amount of Sleep</div>
+                         <div class="md-subhead red">{{sleep.message}}</div>
                       <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
                     </div>
               </div>
@@ -62,9 +65,10 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let avgheart of reemoData.LastAvgHeartRate">
-                   <div class="md-display-2">{{avgheart.average_heartrate}} <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
+                   <div class="md-display-2">{{avgheart.average_heartrate}} <md-icon class="tc-green-500 text-lg">{{avgheart.indicator}}</md-icon></div>
                     <div layout="column">
                       <div class="md-subhead">Average Heart Rate</div>
+                      <div class="md-subhead red">{{avgheart.message}}</div>
                       <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
                     </div>
               </div>
@@ -78,9 +82,10 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let step of reemoData.LastStepcount">
-                   <div class="md-display-2">{{step.total_stepcount}} <md-icon class="tc-red-500 text-sm">arrow_downward</md-icon></div>
+                   <div class="md-display-2">{{step.total_stepcount}} <md-icon class="tc-green-500 text-lg">{{step.indicator}}</md-icon></div>
                     <div layout="column">
                       <div class="md-subhead">Total Stepcount</div>
+                        <div class="md-subhead red">{{step.message}}</div>
                       <div class="md-caption tc-grey-600">updated {{ '2017-03-05 15:02:59' | timeAgo }}</div>
                     </div>
               </div>
@@ -96,7 +101,7 @@
             <button md-fab (click)="weekShowing=!weekShowing">
                 <md-icon>add</md-icon>
             </button>
-            <h3>This Week</h3>
+            <p class="md-headline">This Week</p>
 
       </div>
 
@@ -152,7 +157,7 @@
           <button md-fab (click)="monthShowing=!monthShowing">
               <md-icon>add</md-icon>
           </button>
-            <h3>This Month</h3>
+            <p class="md-headline">This Month</p>
       </div>
 
       <div layout="row" *ngIf="monthShowing">   <!-- month content -->
