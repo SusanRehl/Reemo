@@ -129,29 +129,38 @@ export class ReemoService {
 
 //     console.log("last avg heartrate is: ", lastAvgHeartRate[0].average_heartrate);
 
+//var assignColor = function() {
+//  if(lastAvgHeartRate[0].indicator === "priority_high") {
+//      lastAvgHeartRate[0].colorclass = "redcolor";
+//      } else {
+//      lastAvgHeartRate[0].colorclass = "greencolor";
+//      }
+//  }
+
         if(lastAvgHeartRate[0].average_heartrate < 60 || lastAvgHeartRate[0].average_heartrate > 100) {
               var indicator = 'priority_high';
                var message = "Heart rate is outside target range. Please follow up.";
         }  else  {
               var indicator = 'sentiment_satisfied';
-            //  var colorclass = "tc-green-500 text-lg";
         }
+  //      lastAvgHeartRate[0].colorclass = assignColor();
         lastAvgHeartRate[0].indicator = indicator;
         lastAvgHeartRate[0].message = message;
-  //      lastAvgHeartRate[0].colorclass = colorclass;
 
         console.log("new last avg heart rate array: ", lastAvgHeartRate);
 
 // test message change     lastStepcount[0].total_stepcount = 50;
-        if(lastStepcount[0].total_stepcount < 300) {
+        if(lastStepcount[0].total_stepcount < 500) {
               var indicator = 'priority_high';
                var message = "Step count is below target range. Please follow up.";
+          //     var colorclass = "tc-red-500 text-lg";
         }  else  {
               var indicator = 'sentiment_satisfied';
             //  var colorclass = "tc-green-500 text-lg";
         }
         lastStepcount[0].indicator = indicator;
         lastStepcount[0].message = message;
+    //    lastStepcount[0].colorclass = colorclass;
 
   //test message change      lastSleep[0].sleep_time.hours = 3;
 
