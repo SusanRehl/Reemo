@@ -48,11 +48,11 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let sleep of reemoData.LastSleep">
-                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon class="tc-green-500 text-lg">{{sleep.indicator}}</md-icon></div>
-                   <!-- <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon [ngStyle] = "{redcolor: sleep.indicator=='priority_high', greencolor: sleep.indicator=='sentiment_safisfied'}" "text-lg">{{sleep.indicator}}</md-icon></div> -->
+                   <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <span class={{sleep.colorclass}}><md-icon class="text-lg">{{sleep.indicator}}</md-icon></span></div>
+                   <!-- <div class="md-display-2">{{sleep.sleep_time.hours}} h {{sleep.sleep_time.minutes}} m <md-icon [ngStyle] = "{redcolor: sleep.indicator=='priority_high', greencolor: sleep.indicator=='sentiment_safisfied'}" "text-lg">{{sleep.indicator}}</md-icon></div> OLD ATTEMPT AT COLOR CHANGE - NOW FIXED-->
                     <div layout="column">
                       <div class="md-subhead">Amount of Sleep</div>
-                         <div class="md-subhead red">{{sleep.message}}</div>
+                         <div class="md-subhead redcolor">{{sleep.followup}}</div>
                       <div class="md-caption tc-grey-600">updated {{ '2017-03-06 08:15:59' | timeAgo }}</div>
                     </div>
               </div>
@@ -66,11 +66,11 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let avgheart of reemoData.LastAvgHeartRate">
-                   <div class="md-display-2">{{avgheart.average_heartrate}} <md-icon class="tc-green-500 text-lg">{{avgheart.indicator}}</md-icon></div>
-                   <!-- <div class="md-display-2">{{avgheart.average_heartrate}} <md-icon [ngStyle]=assignColor()>{{avgheart.indicator}}</md-icon></div> -->
+                   <div class="md-display-2">{{avgheart.average_heartrate}} <span class={{avgheart.colorclass}}><md-icon class="text-lg">{{avgheart.indicator}}</md-icon></span></div>
+                   <!-- <div class="md-display-2">{{avgheart.average_heartrate}} <md-icon [ngStyle]=assignColor()>{{avgheart.indicator}}</md-icon></div> OLD ATTEMPT AT COLOR CHANGE - NOW FIXED-->
                     <div layout="column">
                       <div class="md-subhead">Average Heart Rate</div>
-                      <div class="md-subhead red">{{avgheart.message}}</div>
+                      <div class="md-subhead redcolor">{{avgheart.followup}}</div>
                       <div class="md-caption tc-grey-600">updated {{ '2017-03-06 08:15:59' | timeAgo }}</div>
                     </div>
               </div>
@@ -84,11 +84,11 @@
             <md-card-content class="text-center">
               <div *ngIf="reemoData">
                 <div *ngFor="let step of reemoData.LastStepcount">
-                   <div class="md-display-2">{{step.total_stepcount}} <md-icon class="tc-green-500 text-lg">{{step.indicator}}</md-icon></div>
-                   <!-- <div class="md-display-2">{{step.total_stepcount}} <md-icon class={{step.colorclass}}>{{step.indicator}}</md-icon></div> -->
+                   <!-- <div class="md-display-2">{{step.total_stepcount}} <md-icon class="tc-green-500 text-lg">{{step.indicator}}</md-icon></div> OLD HARDCODED COLOR CHANGE - NOW FIXED-->
+                   <div class="md-display-2">{{step.total_stepcount}} <span class={{step.colorclass}}><md-icon class="text-lg">{{step.indicator}}</md-icon></span></div>
                     <div layout="column">
                       <div class="md-subhead">Total Stepcount</div>
-                        <div class="md-subhead red">{{step.message}}</div>
+                        <div class="md-subhead redcolor">{{step.followup}}</div>
                       <div class="md-caption tc-grey-600">updated {{ '2017-03-06 08:15:59' | timeAgo }}</div>
                     </div>
               </div>
@@ -134,7 +134,7 @@
         <md-card>
           <md-card-title class="cardheader">Step Data</md-card-title>
           <md-card-content>
-             <img md-card-image src="../assets/reemochart.png">  <!--[alt]="Step Chart Data" -->
+             <img md-card-image src="../assets/reemochart2.png">  <!--[alt]="Step Chart Data" -->
           </md-card-content>
         </md-card>
       </div>  <!-- end step col  -->

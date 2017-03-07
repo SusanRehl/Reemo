@@ -125,11 +125,11 @@ export class ReemoService {
 
 //TODAY SECTION: CONDITIONAL TO SET INDICATOR (SMILEY = WITHIN TARGET DATA RANGE; ! = OUT OF TARGET DATA RANGE) AND ACTION MESSAGE
 
-//test message change  lastAvgHeartRate[0].average_heartrate = 200;
+//TEST CHANGE ICON AND MESSAGE  lastAvgHeartRate[0].average_heartrate = 200;
 
 //     console.log("last avg heartrate is: ", lastAvgHeartRate[0].average_heartrate);
 
-//var assignColor = function() {
+//var assignColor = function() {     NOPE WRONG ANSWER
 //  if(lastAvgHeartRate[0].indicator === "priority_high") {
 //      lastAvgHeartRate[0].colorclass = "redcolor";
 //      } else {
@@ -139,41 +139,50 @@ export class ReemoService {
 
         if(lastAvgHeartRate[0].average_heartrate < 60 || lastAvgHeartRate[0].average_heartrate > 100) {
               var indicator = 'priority_high';
-               var message = "Heart rate is outside target range. Please follow up.";
+               var followup = "Heart rate is outside target range. Please follow up.";
+                 var colorclass = "tc-red-500";
         }  else  {
               var indicator = 'sentiment_satisfied';
+                var colorclass = "tc-green-500";
         }
-  //      lastAvgHeartRate[0].colorclass = assignColor();
+  //      lastAvgHeartRate[0].colorclass = assignColor();   NOPE WRONG ANSWER
         lastAvgHeartRate[0].indicator = indicator;
-        lastAvgHeartRate[0].message = message;
+        lastAvgHeartRate[0].followup = followup;
+         lastAvgHeartRate[0].colorclass = colorclass;
 
         console.log("new last avg heart rate array: ", lastAvgHeartRate);
 
-// test message change     lastStepcount[0].total_stepcount = 50;
+//TEST CHANGE ICON AND MESSAGE   lastStepcount[0].total_stepcount = 50;
+
+        var followup = "";
+
         if(lastStepcount[0].total_stepcount < 500) {
               var indicator = 'priority_high';
-               var message = "Step count is below target range. Please follow up.";
-          //     var colorclass = "tc-red-500 text-lg";
+               var followup = "Step count is below target range. Please follow up.";
+              var colorclass = "tc-red-500";
         }  else  {
               var indicator = 'sentiment_satisfied';
-            //  var colorclass = "tc-green-500 text-lg";
+             var colorclass = "tc-green-500";
         }
         lastStepcount[0].indicator = indicator;
-        lastStepcount[0].message = message;
-    //    lastStepcount[0].colorclass = colorclass;
+        lastStepcount[0].followup = followup;
+       lastStepcount[0].colorclass = colorclass;
 
-  //test message change      lastSleep[0].sleep_time.hours = 3;
+ //TEST CHANGE ICON AND MESSAGE  lastSleep[0].sleep_time.hours = 3;
+
+        var followup = "";
 
         if(lastSleep[0].sleep_time.hours < 6) {
               var indicator = 'priority_high';
-               var message = "Sleep is below target range. Please follow up.";
-               var colorclass = "tc-red-500 text-lg";
+               var followup = "Sleep is below target range. Please follow up.";
+              var colorclass = "tc-red-500";
         }  else  {
               var indicator = 'sentiment_satisfied';
-             var colorclass = "tc-green-500 text-lg";
+              var colorclass = "tc-green-500";
         }
         lastSleep[0].indicator = indicator;
-        lastSleep[0].message = message;
+        lastSleep[0].followup = followup;
+        lastSleep[0].colorclass = colorclass;
 
 //RETURN DATA
 
